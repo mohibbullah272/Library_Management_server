@@ -21,6 +21,11 @@ copies: {
   },
   available:Boolean
 
+},
+{
+    collection:'books',
+    versionKey:false,
+    timestamps:true
 })
 
  export  const Books = model('Books',BookSchema)
