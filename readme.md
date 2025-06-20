@@ -110,8 +110,7 @@ DB_PASS=************
 # Examples
 Create Book
 ```json
-Copy
-Edit
+
 POST /api/books
 {
   "title": "The Theory of Everything",
