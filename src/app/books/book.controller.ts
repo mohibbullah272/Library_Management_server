@@ -36,7 +36,6 @@ bookRouter.post('/',async(req:Request,res:Response)=>{
 
         
 })
-
 bookRouter.get('/',async(req:Request,res:Response)=>{
 const filter = req.query.filter;
 const sortBy = req.query.sortBy;
@@ -69,4 +68,57 @@ try {
       });
   }
 
+})
+bookRouter.get('/:bookId',async(req:Request,res:Response)=>{
+    const bookId = req.params.bookId;
+    try {
+        const data = await Books.findById(bookId)
+      res.status(200).json({
+        "success": true,
+        "message": "Book retrieved successfully",
+        data
+      })
+    } catch (error:any) {
+        res.status(500).send({
+            message: "Internal server error",
+            success: false,
+            error: error.message
+          });
+    }
+})
+bookRouter.put('/:bookId',async(req:Request,res:Response)=>{
+const bookId = req.params.bookId;
+const body = req.body
+try {
+    const data = await Books.findByIdAndUpdate(bookId,body,{new:true})
+    res.status(200).json({
+        "success": true,
+        "message": "Book updated successfully",
+        data
+    })
+} catch (error:any) {
+    res.status(500).send({
+        message: "Internal server error",
+        success: false,
+        error: error.message
+      });
+}
+
+})
+bookRouter.delete('/:bookId',async(req:Request,res:Response)=>{
+    const bookId = req.params.bookId;
+    try {
+         await Books.findByIdAndDelete(bookId)
+        res.status(202).json({
+            "success": true,
+            "message": "Book deleted successfully",
+            "data": null
+        })
+    } catch (error:any) {
+        res.status(500).send({
+            message: "Internal server error",
+            success: false,
+            error: error.message
+          });
+    }
 })
