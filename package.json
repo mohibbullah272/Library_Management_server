@@ -1,23 +1,22 @@
 {
-  "name": "library_managment_server",
+  "name": "library-backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "start": "node dist/server.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.5.0",
-    "express": "^5.1.0",
-    "mongodb": "^6.17.0",
+    "express": "^4.18.2",
     "mongoose": "^8.16.0"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3",
-    "ts-node-dev": "^2.0.0"
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.8.10",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.2.2"
   }
 }
